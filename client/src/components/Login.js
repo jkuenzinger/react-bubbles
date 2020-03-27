@@ -1,12 +1,40 @@
-import React from "react";
+import React, {useState} from "react";
+import {axiosWithAuth} from '../utils/axiosWithAuth.js';
 
-const Login = () => {
-  // make a post request to retrieve a token from the api
-  // when you have handled the token, navigate to the BubblePage route
+const Login = (props) => {
+  const [login, setLogin] = useState({
+    username:'',
+    password:''
+  });
+
+  const handleChanges = e => {
+    setLogin({
+      ...login,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    axiosWithAuth()
+    .post('login', login)
+    .then(res => {
+      console.log('login res', res)
+      localStorage.setItem('token', res.data.payload);
+      props.history.push('/bubble-page');
+    })
+    .catch(error => {
+      console.log(`login error: ${error}`);
+    })
+  }
   return (
     <>
       <h1>Welcome to the Bubble App!</h1>
-      <p>Build a login page here</p>
+      <form onSubmit={handleSubmit}>
+        <input type='text' placeholder='username' name='username' value={login.username} onChange={handleChanges}/>
+        <input type='text' placeholder='password' name='password' value={login.password} onChange={handleChanges}/>
+        <button>Login G Unit</button>
+      </form>
     </>
   );
 };

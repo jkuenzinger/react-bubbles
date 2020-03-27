@@ -1,0 +1,19 @@
+ -Explain what a token is used for.
+A token is an item that is used to authenticate users. So when you log in with the correct credentials the APi your hitting should return a long encryted string 
+most often called a token. I personaly have used this serveral times to set up private routes protected by an auth token.
+
+ 
+ -What steps can you take in your web apps to keep your data secure?
+ You can set up private routes for your pages containing private user data using an authentication token pulled from an api server like above. 
+
+
+
+ 
+ -Describe how web servers work.
+A web server is someone where the data is stored and able to be accessed online. Usually yoru local machine will use a browser to connec to a web server to pass data
+back and fourth. 
+
+
+ Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+
+You cna use Put, Post, Get, and delete are the main ones that i personally know about. 
